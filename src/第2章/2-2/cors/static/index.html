@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>跨域调用接口</title>
+</head>
+<body>
+  <button onclick='getUserInfo()'>获取用户信息</button>
+  <span id='data'></span>
+</body>
+<script>
+  const getUserInfo = () => {
+    //采用 fetch 发起请求
+    const req = fetch('http://127.0.0.1:4000/api/getUserInfo', {
+        method: 'get',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+    })
+    req.then(stream =>
+        stream.text()
+    ).then(res => {
+        document.getElementById('data').innerText = res;
+    })
+  }
+</script>
+</html>

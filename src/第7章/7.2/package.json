@@ -1,0 +1,22 @@
+{
+  "name": "nan-add",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "install": "node-gyp rebuild"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SKHon/NAN-add.git"
+  },
+  "author": "liujianghong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SKHon/NAN-add/issues"
+  },
+  "homepage": "https://github.com/SKHon/NAN-add#readme",
+  "dependencies": {
+    "nan": "^2.14.1"
+  }
+}

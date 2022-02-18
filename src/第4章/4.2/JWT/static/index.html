@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+    <button onclick="welcome()">进入系统欢迎页面</button>
+    <button onclick="login()">登录</button>
+    <p></p>
+</body>
+<script>
+    function welcome() {
+      const token = localStorage.getItem('token')
+      fetch('/welcome', {
+        method: 'GET',
+        headers: {
+          'authorization': 'Bearer ' + token,
+          'content-type': 'application/json'
+        }
+      }).then(response => {
+        if(response.status === 401) {
+          alert('无权限！需要先登录')
+        } else {
+          return response.json()
+        }
+      }).then(json => {
+        document.querySelector('p').innerHTML = JSON.stringify(json)
+      })
+    }
+
+    function login() {
+      fetch('/login', {
+        method: 'POST',
+        body: JSON.stringify({
+          userName: 'liujianghong'
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      })
+      .then(response => response.json())
+      .then(json => {
+        if(json.token) {
+          localStorage.setItem('token', json.token)
+          alert('登录成功')
+        }
+      })
+    }
+</script>
+</html>
