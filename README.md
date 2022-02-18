@@ -4,6 +4,6 @@
 如果有什么问题，可以提issue讨论。欢迎大家的建议。
 
 如果想买此书，大家可以到当当、京东、天猫等商店搜索进行购买。
-<img src="/img.koa.png" width="50%">
+<img src="/img/koa.png" width="50%">
 
 
