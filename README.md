@@ -7,3 +7,6 @@
 <img src="/img/koa.png" width="50%">
 
 
+# License
+如有引用，请标明出处，写写各位大佬。
+[MIT](https://github.com/SKHon/koa-book-code/blob/master/LICENSE)
