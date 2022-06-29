@@ -21,12 +21,24 @@ function parseMime( url ) {
   return  MIMES_MAP[extName]
 }
 
+// 判断是否为文件夹
+function isDir(path) {
+  const stat = fs.lstatSync(path);
+  return stat.isDirectory();
+}
+
 app.use( async ( ctx ) => {
   // 静态资源目录在本地的绝对路径
   let fullStaticPath = path.join(__dirname, staticPath)
 
+  let staticFile = path.join(fullStaticPath, ctx.url);
+  if(isDir(staticFile)) {
+    // 如果是文件夹，则默认走index.html
+    staticFile = path.join(fullStaticPath, 'index.html')
+  }
+
   // 获取静态资源内容，有可能是文件内容，目录，或404
-  let content = fs.readFileSync(path.join(fullStaticPath, ctx.url), 'binary' )
+  let content = fs.readFileSync(staticFile, 'binary' )
 
   // 解析请求内容的类型
   let mime = parseMime(ctx.url)
